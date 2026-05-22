@@ -31,42 +31,73 @@
   --color-surface: #f4efe7;
   --color-border: #e8e2d8;
   --color-border-subtle: #eeeeee;
-  --color-accent: #2f6fed;
+  --color-accent: #3b82f6;
   --color-accent-soft: #e8f0ff;
+  --color-code-background: #eef5ff;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-page: 64px;
 
-  color-scheme: light;
+  color-scheme: light dark;
   font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--color-primary);
   background: var(--color-background);
   font-size: 16px;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #f2f2f2;
+    --color-secondary: #eaeaea;
+    --color-muted: #afafaf;
+    --color-faint: #9ca3af;
+    --color-background: #1a1a1a;
+    --color-surface: #262626;
+    --color-border: #ffffff1a;
+    --color-border-subtle: #262626;
+    --color-accent: #3b82f6;
+    --color-accent-soft: #262626;
+    --color-code-background: #18233f;
+  }
+}
+
+html {
+  background: var(--color-background);
+}
+
 body {
-  max-width: 650px;
+  max-width: 600px;
   margin: 0 auto;
-  padding: 4rem 2rem;
-  font-weight: 400;
+  padding: var(--space-page) 2rem;
+  font-weight: 350;
   background: var(--color-background);
   line-height: 1.5;
 }
 
 main {
-  margin: 4rem 0 0;
+  margin: var(--space-page) 0 0;
 }
 
 h1 {
   font-size: 23px;
-  font-weight: 420;
+  font-weight: 380;
   letter-spacing: 0;
   line-height: 24px;
-  margin: 0 0 4px;
+  margin: 0 0 var(--space-xs);
+}
+
+.listing-title {
+  margin-bottom: var(--space-lg);
 }
 
 p {
   color: var(--color-secondary);
   font-size: 16px;
   line-height: 1.55;
-  margin: 20px 0;
+  margin: var(--space-lg) 0;
 }
 
 a {
@@ -82,17 +113,17 @@ a:hover {
 
 article h2,
 .home-section h2 {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: -0.025em;
+  letter-spacing: 0;
   line-height: 1.5;
-  margin: 24px 0 14px;
+  margin: var(--space-lg) 0 var(--space-md);
 }
 
 article h3 {
-  font-size: 17px;
-  font-weight: 600;
-  margin: 32px 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: var(--space-xl) 0 var(--space-sm);
 }
 
 article ul,
@@ -103,74 +134,178 @@ article ol {
 }
 
 .meta,
+.item-list time,
 .item-list span,
+.path-list time,
 .muted {
-  color: #737373;
   color: var(--color-muted);
-  font-size: 14px;
+  font-size: 15px;
+}
+
+.section-path {
+  color: var(--color-primary);
+  font-size: 16px;
 }
 
 .meta,
-.item-list span {
+.item-list span:not(.archive-list-row span),
+.section-path {
   font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-.item-list {
+.item-list,
+.path-list {
   font-size: 16px;
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.item-list li {
-  display: list-item;
-  margin: 0 0 4px;
-  padding-left: 16px;
+.item-list li:not(.archive-list-item),
+.path-list li {
+  border-radius: 4px;
+  display: flex;
+  gap: var(--space-md);
+  margin: 0 0 var(--space-xs);
+  padding: var(--space-xs) 0;
   position: relative;
 }
 
-.item-list li::before {
-  content: "■";
+.item-list li::before,
+.path-list li::before {
+  content: none;
+}
+
+.path-list time {
+  flex: 0 0 92px;
   color: var(--color-faint);
-  font-size: 0.45em;
-  left: 0;
-  position: absolute;
-  top: 0.55em;
+  font-size: 15px;
+  font-weight: 300;
+  white-space: nowrap;
 }
 
-.project-list-item {
+.path-list a {
+  font-weight: 350;
+  text-decoration-color: currentColor;
+}
+
+.archive-list-item {
+  border-top: 1px solid var(--color-border-subtle);
   display: block;
-  padding-bottom: 0;
+  margin: 0;
+  padding: var(--space-md) 0;
 }
 
-.project-list-item:last-child {
-  border-bottom: 0;
+.archive-list-item:last-child {
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.archive-list-row {
+  align-items: baseline;
+  display: flex;
+  gap: var(--space-md);
+  justify-content: space-between;
+}
+
+.archive-list-row a {
+  font-weight: 350;
+  text-decoration-color: currentColor;
+}
+
+.archive-list-meta {
+  color: var(--color-faint);
+  font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 300;
+}
+
+.archive-list-row time {
+  flex: 0 0 auto;
+  color: var(--color-faint);
+  font-size: 15px;
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.item-list .archive-list-item p {
+  color: var(--color-muted);
+  margin: var(--space-sm) 0 0;
+}
+
+.archive-list-meta {
+  color: var(--color-faint) !important;
 }
 
 .item-list a {
-  font-weight: 400;
+  font-weight: 350;
+  text-decoration-color: currentColor;
+}
+
+.item-list li:hover a,
+.path-list li:hover a,
+.archive-list-item:hover a {
+  color: var(--color-accent);
 }
 
 .item-list p,
 .summary {
-  margin: 4px 0 0;
+  margin: var(--space-xs) 0 0;
   color: var(--color-muted);
 }
 
 .meta {
-  margin: -6px 0 20px;
+  margin: calc(var(--space-sm) * -1) 0 var(--space-lg);
 }
 
 article .meta:first-child {
-  margin: 0 0 10px;
+  margin: 0 0 var(--space-sm);
+}
+
+.article-page h1 {
+  margin-bottom: var(--space-sm);
+}
+
+.article-page .meta {
+  color: var(--color-faint);
+  font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  margin: 0 0 var(--space-md);
+}
+
+.article-page .summary {
+  margin: 0 0 var(--space-xl);
+}
+
+.article-page .summary + p {
+  margin-top: 0;
+}
+
+.experiment-link {
+  margin-top: var(--space-xl);
 }
 
 code {
   font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 14px;
-  background: var(--color-surface);
+  background: var(--color-code-background);
   padding: 0.08em 0.28em;
   border-radius: 4px;
+}
+
+pre {
+  background: var(--color-code-background);
+  border-radius: 4px;
+  margin: var(--space-lg) 0;
+  overflow-x: auto;
+  padding: var(--space-md);
+}
+
+pre code {
+  background: transparent;
+  border-radius: 0;
+  display: block;
+  line-height: 1.55;
+  padding: 0;
 }
 
 .pixel-accent {
@@ -181,10 +316,14 @@ code {
 @media (max-width: 560px) {
   body {
     min-width: 0;
-    padding: 3rem 1.5rem;
+    padding: calc(var(--space-lg) * 2) var(--space-lg);
   }
 
   main {
-    margin-top: 3rem;
+    margin-top: calc(var(--space-lg) * 2);
+  }
+
+  .archive-list-row {
+    display: block;
   }
 }

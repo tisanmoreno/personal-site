@@ -1,6 +1,6 @@
 # Personal Site
 
-Minimal personal site for writing, projects, and notes.
+Minimal personal site for writing and experiments.
 
 The site is built from Markdown content using a small TypeScript build script and static HTML/CSS output.
 
@@ -9,8 +9,7 @@ The site is built from Markdown content using a small TypeScript build script an
 ```text
 content/
   writing/
-  projects/
-  notes/
+  experiments/
 public/
   assets/
 src/

@@ -5,13 +5,13 @@ import { layout } from "./layout.ts";
 export function listingPage(title: string, items: ContentItem[]) {
   const list = items.length
     ? items
-        .map((item) => (item.kind === "projects" ? projectListItem(item) : defaultListItem(item)))
+        .map((item) => (item.kind === "experiments" ? experimentListItem(item) : writingListItem(item)))
         .join("")
     : `<li class="muted">Nothing published yet.</li>`;
 
   return layout(
-    `<main>
-      <h1>${title}</h1>
+    `<main class="listing-page">
+      <h1 class="listing-title ${title === "Experiments" ? "pixel-accent" : ""}">${title}</h1>
       <ul class="item-list">${list}</ul>
     </main>`,
     {
@@ -22,29 +22,28 @@ export function listingPage(title: string, items: ContentItem[]) {
   );
 }
 
-function defaultListItem(item: ContentItem) {
-  return `<li>
-    <a href="${contentPath(item.kind, item.slug)}">${item.title}</a>
-    <span>${item.date}</span>
+function writingListItem(item: ContentItem) {
+  return `<li class="archive-list-item">
+    <div class="archive-list-row">
+      <a href="${contentPath(item.kind, item.slug)}">${item.title}</a>
+      <time datetime="${item.date}">${item.date}</time>
+    </div>
     ${item.summary ? `<p>${item.summary}</p>` : ""}
   </li>`;
 }
 
-function projectListItem(item: ContentItem) {
-  const meta = [item.year, item.status, ...item.tags].filter(Boolean).join(" / ");
-
-  return `<li class="project-list-item">
-    <div>
+function experimentListItem(item: ContentItem) {
+  return `<li class="archive-list-item">
+    <div class="archive-list-row">
       <a href="${contentPath(item.kind, item.slug)}">${item.title}</a>
-      ${item.summary ? `<p>${item.summary}</p>` : ""}
+      <time datetime="${item.date}">${item.date}</time>
     </div>
-    ${meta ? `<span>${meta}</span>` : ""}
+    ${item.summary ? `<p>${item.summary}</p>` : ""}
   </li>`;
 }
 
 function descriptionFor(title: string) {
   if (title === "Writing") return "Essays and longer reflections by Tisan Moreno.";
-  if (title === "Projects") return "Projects, shipped work, and experiments by Tisan Moreno.";
-  if (title === "Notes") return "Short notes, observations, and fragments by Tisan Moreno.";
-  return "Writing, projects, and notes by Tisan Moreno.";
+  if (title === "Experiments") return "Experiments, shipped work, and prototypes by Tisan Moreno.";
+  return "Writing and experiments by Tisan Moreno.";
 }

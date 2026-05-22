@@ -5,6 +5,7 @@ year: 2026
 summary: An interface experiment for working with AI agents.
 tags: [agents, ui, ai]
 status: in progress
+type: extension
 url: https://github.com/tisanmoreno/agentui
 draft: false
 ---

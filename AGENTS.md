@@ -9,13 +9,12 @@ This repo is a minimal personal site built from simple Markdown files.
 - Do not edit files in `dist/` by hand.
 - Prefer small, direct changes over broad refactors.
 - Preserve the author's voice when editing writing.
-- Ask before making heavy rewrites to personal essays, notes, or bio text.
+- Ask before making heavy rewrites to personal essays or bio text.
 
 ## Content Types
 
 - `content/writing/`: long-form essays and reflections.
-- `content/projects/`: project pages, shipped work, and experiments.
-- `content/notes/`: shorter observations, logs, and fragments.
+- `content/experiments/`: experiments, shipped work, and prototypes.
 
 ## Drafts
 
@@ -25,4 +24,3 @@ Content can include `draft: true` in frontmatter. Drafts should not be published
 
 - `npm run build`: generate the static site into `dist/`.
 - `npm run dev`: build and serve the site locally.
-

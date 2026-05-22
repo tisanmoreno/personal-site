@@ -2,14 +2,14 @@
 title: Personal Site
 date: 2026-05-21
 year: 2026
-summary: A minimal static site for writing, projects, and notes.
+summary: A minimal static site for writing and experiments.
 tags: [web, static-site]
 status: in progress
 url: /
 draft: true
 ---
 
-A small home for writing, shipped work, and notes. The goal is to keep the site close to plain files, so publishing feels lightweight and durable.
+A small home for writing and shipped work. The goal is to keep the site close to plain files, so publishing feels lightweight and durable.
 
 The first version uses Markdown content, a TypeScript build script, self-hosted fonts, and handcrafted HTML/CSS.
 

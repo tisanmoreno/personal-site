@@ -2,17 +2,14 @@ import type { ContentItem } from "../content.ts";
 import { contentPath } from "../routes.ts";
 import { layout } from "./layout.ts";
 
-export function projectPage(item: ContentItem) {
-  const meta = [item.year, item.status, ...item.tags].filter(Boolean).join(" / ");
-
+export function experimentPage(item: ContentItem) {
   return layout(
     `<main>
-      <article>
-        <p class="meta">${meta}</p>
+      <article class="article-page">
         <h1>${item.title}</h1>
-        ${item.summary ? `<p class="summary">${item.summary}</p>` : ""}
-        ${item.url ? `<p><a href="${item.url}">Visit project</a></p>` : ""}
+        <p class="meta"><time datetime="${item.date}">${item.date}</time>${item.type ? ` / ${item.type}` : ""}</p>
         ${item.body}
+        ${item.url ? `<p class="experiment-link"><a href="${item.url}">Read the code</a></p>` : ""}
       </article>
     </main>`,
     {

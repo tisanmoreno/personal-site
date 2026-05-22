@@ -1,4 +1,4 @@
-export type ContentKind = "writing" | "projects" | "notes";
+export type ContentKind = "writing" | "experiments";
 
 export type ContentItem = {
   kind: ContentKind;
@@ -9,6 +9,7 @@ export type ContentItem = {
   summary: string;
   tags: string[];
   status: string;
+  type: string;
   url: string;
   draft: boolean;
   body: string;
@@ -21,7 +22,7 @@ import MarkdownIt from "markdown-it";
 
 const contentRoot = path.join(process.cwd(), "content");
 
-const kinds: ContentKind[] = ["writing", "projects", "notes"];
+const kinds: ContentKind[] = ["writing", "experiments"];
 const markdown = new MarkdownIt({
   html: false,
   linkify: true,
@@ -62,6 +63,7 @@ export function parseContentFile(kind: ContentKind, filename: string, source: st
     summary: String(data.summary || ""),
     tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
     status: String(data.status || ""),
+    type: String(data.type || ""),
     url: String(data.url || ""),
     draft: Boolean(data.draft),
     body: markdown.render(content),

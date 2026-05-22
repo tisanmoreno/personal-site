@@ -16,10 +16,14 @@ The goal is to see how paragraphs, links, lists, and code blocks feel before pub
 - Section headings
 - Lists
 - Inline code like `npm run build`
-- Links to [projects](/projects/)
+- Links to [experiments](/experiments/)
 
 ```ts
 const status = "temporary";
+
+function publish(title: string) {
+  return title.toLowerCase().replaceAll(" ", "-");
+}
 ```
 
-This page can be replaced once the first real essay or note is ready.
+This page can be replaced once the first real essay is ready.

@@ -8,37 +8,34 @@ import { contentPath } from "./routes.ts";
 import { articlePage } from "./templates/article.ts";
 import { homePage } from "./templates/home.ts";
 import { listingPage } from "./templates/listing.ts";
-import { projectPage } from "./templates/project.ts";
+import { experimentPage } from "./templates/experiment.ts";
 
 const dist = path.join(process.cwd(), "dist");
 
 async function build() {
-  const [writing, projects, notes] = await Promise.all([
+  const [writing, experiments] = await Promise.all([
     getContent("writing"),
-    getContent("projects"),
-    getContent("notes"),
+    getContent("experiments"),
   ]);
 
   await rm(dist, { force: true, recursive: true });
   await mkdir(dist, { recursive: true });
 
   await Promise.all([
-    writePage("index.html", homePage({ writing, projects, notes })),
+    writePage("index.html", homePage({ writing, experiments })),
     writePage("writing/index.html", listingPage("Writing", writing)),
-    writePage("projects/index.html", listingPage("Projects", projects)),
-    writePage("notes/index.html", listingPage("Notes", notes)),
+    writePage("experiments/index.html", listingPage("Experiments", experiments)),
     writePage("robots.txt", robotsTxt()),
-    writePage("sitemap.xml", sitemapXml(["/", "/writing/", "/projects/", "/notes/", ...contentPaths(writing, projects, notes)])),
+    writePage("sitemap.xml", sitemapXml(["/", "/writing/", "/experiments/", ...contentPaths(writing, experiments)])),
     copyStaticFiles(),
   ]);
 
   await Promise.all([
     ...writing.map((item) => writePage(`${item.kind}/${item.slug}/index.html`, articlePage(item))),
-    ...projects.map((item) => writePage(`${item.kind}/${item.slug}/index.html`, projectPage(item))),
-    ...notes.map((item) => writePage(`${item.kind}/${item.slug}/index.html`, articlePage(item))),
+    ...experiments.map((item) => writePage(`${item.kind}/${item.slug}/index.html`, experimentPage(item))),
   ]);
 
-  console.log(`Built ${site.title} with ${writing.length} writing, ${projects.length} projects, and ${notes.length} notes.`);
+  console.log(`Built ${site.title} with ${writing.length} writing and ${experiments.length} experiments.`);
 }
 
 async function writePage(relativePath: string, html: string) {
