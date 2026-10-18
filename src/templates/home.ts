@@ -16,7 +16,7 @@ export function homePage({ writing, experiments }: HomePageProps) {
     `<main>
       <h1>${site.title}</h1>
       <p>I’m a product builder focused on how AI can expand the way people learn, think, communicate, and work.</p>
-      <p>I previously worked at <a href="https://www.treble.ai/">treble.ai</a> (YC S19). I after 7 months of exploring what AI makes newly possible y decided to join <a href="https://www.platzi.com/">Platzi</a> (YC W15) to build acquisition growth systems and learn about edtech</p>
+      <p>I previously worked at <a href="https://www.treble.ai/">treble.ai</a> (YC S19). After 7 months of exploring what AI makes newly possible, I decided to join <a href="https://platzi.com/">Platzi</a> (YC W15) to build acquisition growth systems for a global edtech platform.</p>
       <p class="section-path"><a href="/writing/">writing/</a></p>
       ${pathList(featuredWriting)}
       <p class="section-path"><a href="/experiments/">experiments/</a></p>
