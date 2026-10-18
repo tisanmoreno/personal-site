@@ -142,6 +142,12 @@ article ol {
   font-size: 15px;
 }
 
+.divider {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: 40px 0;
+}
+
 .section-path {
   color: var(--color-primary);
   font-size: 16px;

@@ -19,6 +19,7 @@ export function homePage({ writing, experiments }: HomePageProps) {
       <p>I’m a product builder focused on how AI can expand the way people learn, think, communicate, and work.</p>
       <p>Today, I build acquisition growth systems at <a href="https://platzi.com/">Platzi</a> (YC W15) — an online education platform where Latin America learns tech. Before that: <a href="https://www.treble.ai/">treble.ai</a> (YC S19).</p>
       <p>Beyond work, I’m into arts, music, and trail running.</p>
+      <hr class="divider" />
       <p class="section-path"><a href="/writing/">writing/</a></p>
       ${pathList(featuredWriting)}
       <p class="section-path"><a href="/experiments/">experiments/</a></p>
