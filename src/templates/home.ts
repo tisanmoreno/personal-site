@@ -15,9 +15,8 @@ export function homePage({ writing, experiments }: HomePageProps) {
   return layout(
     `<main>
       <h1>${site.title}</h1>
-      <p>I’m a product builder focused on how AI can expand the way people learn, think, communicate, and work.</p>
-      <p>I previously worked at <a href="https://www.treble.ai/">treble.ai</a> (YC S19). I left to go all-in on learning AI.</p>
-      <p>After multiple experiments exploring how to bring the value of AI to traditional industrial businesses, I pivoted and joined <a href="https://platzi.com/">Platzi</a> (YC W15) to build acquisition growth systems with AI at the core — pushing the frontier while staying accountable to real business outcomes.</p>
+      <p>Hey — welcome. This is where I share my writing and some experiments I’m working on.</p>
+      <p>AI-pilled builder of acquisition growth systems at <a href="https://platzi.com/">Platzi</a> (YC W15). Before that: product management, product marketing, and a year all-in on AI.</p>
       <p class="section-path"><a href="/writing/">writing/</a></p>
       ${pathList(featuredWriting)}
       <p class="section-path"><a href="/experiments/">experiments/</a></p>
